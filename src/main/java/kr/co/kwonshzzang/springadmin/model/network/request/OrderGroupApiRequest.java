@@ -1,11 +1,13 @@
 package kr.co.kwonshzzang.springadmin.model.network.request;
 
+import kr.co.kwonshzzang.springadmin.model.enumClass.OrderType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -15,13 +17,13 @@ import java.time.LocalDateTime;
 public class OrderGroupApiRequest {
     private Long id;
     private String status;
-    private String orderType;
+    private OrderType orderType;
     private String revAddress;
     private String revName;
     private String paymentType;
     private BigDecimal totalPrice;
     private Integer totalQuantity;
     private LocalDateTime orderAt;
-    private LocalDateTime arrivalDate;
+    private LocalDate arrivalDate;
     private Long userId;
 }

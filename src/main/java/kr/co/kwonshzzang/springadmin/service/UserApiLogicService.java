@@ -2,6 +2,7 @@ package kr.co.kwonshzzang.springadmin.service;
 
 import kr.co.kwonshzzang.springadmin.ifs.CRUDInterface;
 import kr.co.kwonshzzang.springadmin.model.entity.User;
+import kr.co.kwonshzzang.springadmin.model.enumClass.UserStatus;
 import kr.co.kwonshzzang.springadmin.model.network.Header;
 import kr.co.kwonshzzang.springadmin.model.network.request.UserApiRequest;
 import kr.co.kwonshzzang.springadmin.model.network.response.UserApiResponse;
@@ -26,7 +27,7 @@ public class UserApiLogicService implements CRUDInterface<UserApiRequest, UserAp
         User user = User.builder()
                 .account(userApiRequest.getAccount())
                 .password(userApiRequest.getPassword())
-                .status("REGISTERED")
+                .status(UserStatus.REGISTERED)
                 .phoneNumber(userApiRequest.getPhoneNumber())
                 .email(userApiRequest.getEmail())
                 .registeredAt(LocalDateTime.now())

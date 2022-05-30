@@ -1,5 +1,6 @@
 package kr.co.kwonshzzang.springadmin.model.entity;
 
+import kr.co.kwonshzzang.springadmin.model.enumClass.ItemStatus;
 import lombok.*;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.CreatedBy;
@@ -26,7 +27,8 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private ItemStatus status;  //등록 / 해지 / 검수중(등록대기중)
     private String name;
     private String title;
     private String content;
