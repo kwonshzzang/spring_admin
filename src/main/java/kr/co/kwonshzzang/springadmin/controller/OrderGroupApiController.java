@@ -4,7 +4,7 @@ import kr.co.kwonshzzang.springadmin.ifs.CRUDInterface;
 import kr.co.kwonshzzang.springadmin.model.network.Header;
 import kr.co.kwonshzzang.springadmin.model.network.request.OrderGroupApiRequest;
 import kr.co.kwonshzzang.springadmin.model.network.response.OrderGroupApiResponse;
-import kr.co.kwonshzzang.springadmin.service.OrderGroupApiService;
+import kr.co.kwonshzzang.springadmin.service.OrderGroupApiLogicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/orderGroup")
 public class OrderGroupApiController implements CRUDInterface<OrderGroupApiRequest, OrderGroupApiResponse> {
     @Autowired
-    private OrderGroupApiService orderGroupApiService;
+    private OrderGroupApiLogicService orderGroupApiService;
 
     @Override
     @PostMapping("")

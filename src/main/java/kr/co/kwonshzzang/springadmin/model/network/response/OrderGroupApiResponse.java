@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -22,6 +23,6 @@ public class OrderGroupApiResponse {
     private BigDecimal totalPrice;
     private Integer totalQuantity;
     private LocalDateTime orderAt;
-    private LocalDateTime arrivalDate;
+    private LocalDate arrivalDate;
     private Long userId;
 }
