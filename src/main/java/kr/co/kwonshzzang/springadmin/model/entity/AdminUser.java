@@ -1,5 +1,7 @@
 package kr.co.kwonshzzang.springadmin.model.entity;
 
+import kr.co.kwonshzzang.springadmin.model.enumClass.UserRole;
+import kr.co.kwonshzzang.springadmin.model.enumClass.UserStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,8 +31,10 @@ public class AdminUser {
 
     private String account;
     private String password;
-    private String status;
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private UserStatus status;
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
     private LocalDateTime lastLoginAt;
     private LocalDateTime passwordUpdatedAt;
     private int loginFailCount;
