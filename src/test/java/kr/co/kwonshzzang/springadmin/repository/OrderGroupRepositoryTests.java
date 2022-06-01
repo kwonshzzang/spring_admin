@@ -1,6 +1,7 @@
 package kr.co.kwonshzzang.springadmin.repository;
 
 import kr.co.kwonshzzang.springadmin.model.entity.OrderGroup;
+import kr.co.kwonshzzang.springadmin.model.enumClass.OrderType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,7 +21,7 @@ class OrderGroupRepositoryTests {
     void create() {
         OrderGroup orderGroup = new OrderGroup();
         orderGroup.setStatus("COMPLETE");
-        orderGroup.setOrderType("ALL");
+        orderGroup.setOrderType(OrderType.ALL);
         orderGroup.setRevAddress("서울시 강남구");
         orderGroup.setRevName("홍길동");
         orderGroup.setPaymentType("CARD");

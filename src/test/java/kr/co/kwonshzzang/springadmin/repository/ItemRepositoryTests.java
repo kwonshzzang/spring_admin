@@ -2,11 +2,13 @@ package kr.co.kwonshzzang.springadmin.repository;
 
 
 import kr.co.kwonshzzang.springadmin.model.entity.Item;
+import kr.co.kwonshzzang.springadmin.model.enumClass.ItemStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -21,11 +23,11 @@ class ItemRepositoryTests {
     @Test
     void create() {
         Item item = new Item();
-        item.setStatus("UNREGISTERED");
+        item.setStatus(ItemStatus.REGISTERED);
         item.setName("삼성노트북");
         item.setTitle("삼성노트북 A100");
         item.setContent("2022년형 노트북 입니다.");
-        item.setPrice(900000.0);
+        item.setPrice(BigDecimal.valueOf(900000));
         item.setBrandName("삼성");
         item.setRegisteredAt(LocalDateTime.now());
         item.setCreatedAt(LocalDateTime.now());

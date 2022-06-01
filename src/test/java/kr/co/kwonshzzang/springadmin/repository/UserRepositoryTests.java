@@ -1,6 +1,7 @@
 package kr.co.kwonshzzang.springadmin.repository;
 
 import kr.co.kwonshzzang.springadmin.model.entity.User;
+import kr.co.kwonshzzang.springadmin.model.enumClass.UserStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -33,7 +34,7 @@ class UserRepositoryTests {
         User user = new User();
         user.setAccount(account);
         user.setPassword(password);
-        user.setStatus(status);
+        user.setStatus(UserStatus.REGISTERED);
         user.setEmail(email);
         user.setPhoneNumber(phoneNumber);
         user.setRegisteredAt(registeredAt);
@@ -43,7 +44,7 @@ class UserRepositoryTests {
         User u = User.builder()
                 .account(account)
                 .password(password)
-                .status(status)
+                .status(UserStatus.REGISTERED)
                 .email(email)
                 .build();
 
@@ -61,8 +62,8 @@ class UserRepositoryTests {
 
         User user = userRepository.findFirstByPhoneNumberOrderByIdDesc(phoneNumber);
 
-        user.setEmail("").setPhoneNumber("").setStatus("");
-        User u = new User().setAccount("").setPassword("").setPassword("");
+//        user.setEmail("").setPhoneNumber("").setStatus();
+//        User u = new User().setAccount("").setPassword("").setPassword("");
 
         user.getOrderGroupList().stream().forEach(orderGroup -> {
 
