@@ -1,6 +1,7 @@
 package kr.co.kwonshzzang.springadmin.model.entity;
 
 import kr.co.kwonshzzang.springadmin.model.enumClass.OrderType;
+import kr.co.kwonshzzang.springadmin.model.enumClass.PaymentType;
 import lombok.*;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.CreatedBy;
@@ -33,7 +34,8 @@ public class OrderGroup {
     private OrderType orderType;  //주문의 형태 - 일괄 / 개별
     private String revAddress;
     private String revName;
-    private String paymentType;  //카드 / 현금
+    @Enumerated(EnumType.STRING)
+    private PaymentType paymentType;  //카드 / 현금
     private BigDecimal totalPrice;
     private Integer totalQuantity;
     private LocalDateTime orderAt;

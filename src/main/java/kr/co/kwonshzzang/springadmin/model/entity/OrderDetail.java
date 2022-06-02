@@ -1,5 +1,6 @@
 package kr.co.kwonshzzang.springadmin.model.entity;
 
+import kr.co.kwonshzzang.springadmin.model.enumClass.OrderStatus;
 import lombok.*;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.CreatedBy;
@@ -26,7 +27,8 @@ public class OrderDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
     private LocalDate arrivalDate;
     private Integer quantity;
     private BigDecimal totalPrice;

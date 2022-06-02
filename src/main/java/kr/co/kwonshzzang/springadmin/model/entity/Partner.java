@@ -1,5 +1,6 @@
 package kr.co.kwonshzzang.springadmin.model.entity;
 
+import kr.co.kwonshzzang.springadmin.model.enumClass.UserStatus;
 import lombok.*;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.CreatedBy;
@@ -26,7 +27,8 @@ public class Partner {
     private Long id;
 
     private String name;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private UserStatus status;
     private String address;
     private String callCenter;
     private String partnerNumber;

@@ -1,6 +1,7 @@
 package kr.co.kwonshzzang.springadmin.model.network.request;
 
 import kr.co.kwonshzzang.springadmin.model.enumClass.OrderType;
+import kr.co.kwonshzzang.springadmin.model.enumClass.PaymentType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +21,7 @@ public class OrderGroupApiRequest {
     private OrderType orderType;
     private String revAddress;
     private String revName;
-    private String paymentType;
+    private PaymentType paymentType;
     private BigDecimal totalPrice;
     private Integer totalQuantity;
     private LocalDateTime orderAt;
