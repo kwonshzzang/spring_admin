@@ -1,5 +1,6 @@
 package kr.co.kwonshzzang.springadmin.model.entity;
 
+import kr.co.kwonshzzang.springadmin.model.enumClass.OrderStatus;
 import kr.co.kwonshzzang.springadmin.model.enumClass.OrderType;
 import kr.co.kwonshzzang.springadmin.model.enumClass.PaymentType;
 import lombok.*;
@@ -29,7 +30,8 @@ public class OrderGroup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
     @Enumerated(EnumType.STRING)
     private OrderType orderType;  //주문의 형태 - 일괄 / 개별
     private String revAddress;

@@ -1,7 +1,9 @@
 package kr.co.kwonshzzang.springadmin.repository;
 
 import kr.co.kwonshzzang.springadmin.model.entity.OrderGroup;
+import kr.co.kwonshzzang.springadmin.model.enumClass.OrderStatus;
 import kr.co.kwonshzzang.springadmin.model.enumClass.OrderType;
+import kr.co.kwonshzzang.springadmin.model.enumClass.PaymentType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,11 +22,11 @@ class OrderGroupRepositoryTests {
     @Test
     void create() {
         OrderGroup orderGroup = new OrderGroup();
-        orderGroup.setStatus("COMPLETE");
+        orderGroup.setStatus(OrderStatus.COMPLETE);
         orderGroup.setOrderType(OrderType.ALL);
         orderGroup.setRevAddress("서울시 강남구");
         orderGroup.setRevName("홍길동");
-        orderGroup.setPaymentType("CARD");
+        orderGroup.setPaymentType(PaymentType.CARD);
         orderGroup.setTotalPrice(BigDecimal.valueOf(900000));
         orderGroup.setTotalQuantity(1);
         orderGroup.setOrderAt(LocalDateTime.now().minusDays(2));

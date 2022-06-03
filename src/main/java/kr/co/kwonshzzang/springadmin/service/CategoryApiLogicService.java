@@ -2,9 +2,15 @@ package kr.co.kwonshzzang.springadmin.service;
 
 import kr.co.kwonshzzang.springadmin.model.entity.Category;
 import kr.co.kwonshzzang.springadmin.model.network.Header;
+import kr.co.kwonshzzang.springadmin.model.network.Pagination;
 import kr.co.kwonshzzang.springadmin.model.network.request.CategoryApiRequest;
 import kr.co.kwonshzzang.springadmin.model.network.response.CategoryApiResponse;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CategoryApiLogicService extends BaseService<CategoryApiRequest, CategoryApiResponse, Category> {
@@ -18,13 +24,14 @@ public class CategoryApiLogicService extends BaseService<CategoryApiRequest, Cat
                 .type(body.getType())
                 .build();
         Category newCategory = baseRepository.save(category);
-        return response(newCategory);
+        return Header.OK(response(newCategory));
     }
 
     @Override
     public Header<CategoryApiResponse> read(Long id) {
         return baseRepository.findById(id)
                 .map(this::response)
+                .map(Header::OK)
                 .orElseGet(() -> Header.ERROR("데이터 없음"));
     }
 
@@ -40,6 +47,7 @@ public class CategoryApiLogicService extends BaseService<CategoryApiRequest, Cat
                 })
                 .map(newCategory -> baseRepository.save(newCategory))
                 .map(this::response)
+                .map(Header::OK)
                 .orElseGet(() -> Header.ERROR("데이터 없음"));
     }
 
@@ -53,12 +61,30 @@ public class CategoryApiLogicService extends BaseService<CategoryApiRequest, Cat
                 .orElseGet(() -> Header.ERROR("데이터 없음"));
     }
 
-    private Header<CategoryApiResponse> response(Category category) {
-        CategoryApiResponse body = CategoryApiResponse.builder()
+    @Override
+    public Header<List<CategoryApiResponse>> search(Pageable pageable) {
+        Page<Category> categories = baseRepository.findAll(pageable);
+
+        List<CategoryApiResponse> userApiResponseList = categories.stream()
+                .map(this::response)
+                .collect(Collectors.toList());
+
+        Pagination pagination = Pagination.builder()
+                .totalPages(categories.getTotalPages())
+                .totalElements(categories.getTotalElements())
+                .currentPage(categories.getNumber())
+                .currentElements(categories.getNumberOfElements())
+                .build();
+
+        return Header.OK(userApiResponseList, pagination);
+    }
+
+    private CategoryApiResponse response(Category category) {
+        return  CategoryApiResponse.builder()
                 .id(category.getId())
                 .type(category.getType())
                 .title(category.getTitle())
                 .build();
-        return Header.OK(body);
     }
 }
+

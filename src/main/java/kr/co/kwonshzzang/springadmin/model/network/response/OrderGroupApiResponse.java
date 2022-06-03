@@ -1,5 +1,6 @@
 package kr.co.kwonshzzang.springadmin.model.network.response;
 
+import kr.co.kwonshzzang.springadmin.model.enumClass.OrderStatus;
 import kr.co.kwonshzzang.springadmin.model.enumClass.OrderType;
 import kr.co.kwonshzzang.springadmin.model.enumClass.PaymentType;
 import lombok.AllArgsConstructor;
@@ -17,7 +18,7 @@ import java.time.LocalDateTime;
 @Builder
 public class OrderGroupApiResponse {
     private Long id;
-    private String status;
+    private OrderStatus status;
     private OrderType orderType;
     private String revAddress;
     private String revName;

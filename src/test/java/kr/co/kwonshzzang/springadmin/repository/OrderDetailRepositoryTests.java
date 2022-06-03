@@ -1,6 +1,7 @@
 package kr.co.kwonshzzang.springadmin.repository;
 
 import kr.co.kwonshzzang.springadmin.model.entity.OrderDetail;
+import kr.co.kwonshzzang.springadmin.model.enumClass.OrderStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +23,7 @@ class OrderDetailRepositoryTests {
     void create() {
         OrderDetail orderDetail = new OrderDetail();
 
-        orderDetail.setStatus("WAITING");
+        orderDetail.setStatus(OrderStatus.ORDERING);
         orderDetail.setArrivalDate(LocalDate.now().plusDays(2L));
         orderDetail.setQuantity(1);
         orderDetail.setTotalPrice(BigDecimal.valueOf(900000));

@@ -6,8 +6,9 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum PaymentType {
-    CARD(0, "CARD", "지불수단 카드"),
-    CASH(1, "CASH", "지불수단 현금")
+    BANK_TRANSFER(0, "BANK_TRANSFER", "계좌이체"),
+    CARD(1, "CARD", "신용카드"),
+    CHECK_CARD(2, "CHECK_CARD", "체크카드")
     ;
 
     private Integer id;
