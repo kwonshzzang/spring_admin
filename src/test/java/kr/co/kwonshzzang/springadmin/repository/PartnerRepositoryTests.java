@@ -1,6 +1,7 @@
 package kr.co.kwonshzzang.springadmin.repository;
 
 import kr.co.kwonshzzang.springadmin.model.entity.Partner;
+import kr.co.kwonshzzang.springadmin.model.enumClass.UserStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,7 +20,7 @@ class PartnerRepositoryTests {
     @Test
     void create() {
         String name = "Partner01";
-        String status = "REGISTERED";
+        UserStatus status = UserStatus.REGISTERED;
         String address = "서울시 강남구";
         String callCenter = "070-1111-2222";
         String partnerNumber = "010-1111-2222";
