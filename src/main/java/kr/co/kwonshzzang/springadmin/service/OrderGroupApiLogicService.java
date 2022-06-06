@@ -103,7 +103,7 @@ public class OrderGroupApiLogicService extends BaseService<OrderGroupApiRequest,
     }
 
 
-    private OrderGroupApiResponse response(OrderGroup orderGroup) {
+    public OrderGroupApiResponse response(OrderGroup orderGroup) {
         return OrderGroupApiResponse.builder()
                 .id(orderGroup.getId())
                 .status(orderGroup.getStatus())
